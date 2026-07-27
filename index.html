@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Benasia — Web development, UX/UI, E-commerce</title>
+  <meta name="description" content="Benasia crafts perfect digital products — web development, UX/UI design and e-commerce experiences." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Big+Shoulders+Display:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <nav class="primary-nav" aria-label="Primary">
+            <ul id="primary-nav-list" class="primary-nav__list">
+              <li><a href="#top" class="is-active">Home</a></li>
+              <li><a href="#service">Service</a></li>
+              <li><a href="#process">Process</a></li>
+              <li><a href="#philosophy">Philosophy</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <button
+            type="button"
+            class="nav-toggle"
+            id="navToggle"
+            aria-expanded="false"
+            aria-controls="primary-nav-list"
+            aria-label="Toggle navigation menu"
+          >
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+        </div>
+      </header>
+
+      <p class="hero__vertical-label">Web development&nbsp;|&nbsp;UX-UI&nbsp;|&nbsp;E-commerce</p>
+
+      <div class="hero__visual" aria-hidden="true">
+        <img class="ring-art" src="assets/ring.png" alt="" width="748" height="760" />
+      </div>
+
+      <div class="hero__content">
+        <h1 id="hero-title" class="hero__title">
+          <span class="hero__title-visual" aria-hidden="true"><span class="hero__title-word"><span>b</span><span>e</span><span>n</span><span>a</span><span>s</span><span>i</span><span>a</span></span><span class="hero__title-dot">.</span></span>
+          <span class="sr-only">benasia.</span>
+        </h1>
+
+        <p class="hero__subtitle">Create perfect digital product with us</p>
+
+        <a class="hero__cta" href="#contact">
+          Start a project
+          <svg class="hero__cta-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+      <p class="hero__stats">12 projects delivered&nbsp;&middot;&nbsp;8 clients&nbsp;&middot;&nbsp;Est. 2026</p>
+    </section>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
