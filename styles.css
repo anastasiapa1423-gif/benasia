@@ -280,8 +280,8 @@ button {
 
 .hero__title {
   margin: 0;
-  font-family: "Space Mono", ui-monospace, monospace;
-  font-weight: 700;
+  font-family: "Martian Mono", ui-monospace, monospace;
+  font-weight: 800;
   font-size: clamp(2.4rem, 10.9vw, 13.1rem);
   line-height: 0.85;
   letter-spacing: -0.02em;
@@ -290,7 +290,7 @@ button {
 .hero__title-visual {
   display: inline-flex;
   align-items: baseline;
-  transform: scaleX(0.562);
+  transform: scaleX(0.491);
   transform-origin: left center;
 }
 
