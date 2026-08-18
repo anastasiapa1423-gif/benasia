@@ -1,12 +1,10 @@
 /* ---------------------------------------------------
    Design tokens
-   Desktop layout below is calibrated against a measured
-   1920x1080 reference comp (positions expressed in vw/vh
-   so the composition scales together as one unit).
 --------------------------------------------------- */
 :root {
   /* color */
   --color-bg: #1f0333;
+  --color-bg-black: #050006;
   --color-text: #ffffff;
   --color-text-muted: rgba(255, 255, 255, 0.74);
   --color-text-faint: rgba(255, 255, 255, 0.55);
@@ -15,7 +13,8 @@
   --color-focus: #e9d8ff;
 
   /* type */
-  --font-display: "Big Shoulders Display", ui-sans-serif, system-ui, sans-serif;
+  --font-chamfer: "Martian Mono", ui-monospace, monospace;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   /* spacing (4/8 rhythm) */
@@ -36,6 +35,7 @@
 
   /* layout */
   --container-max: 1280px;
+  --header-height: 84px;
 }
 
 /* ---------------------------------------------------
@@ -54,7 +54,7 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--color-bg);
+  background: var(--color-bg-black);
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 16px;
@@ -133,38 +133,76 @@ button {
 }
 
 /* ---------------------------------------------------
-   Hero (fills the viewport; header/nav, vertical label,
-   ring and stats are all anchored to it by vw/vh so the
-   whole composition matches the reference comp together)
+   Chamfered wordmark component
+   Reused for the nav brand-mark and CTA labels. Martian
+   Mono already has flat/blocky terminals; the clip-path
+   chamfers each glyph's four corners at a diagonal to get
+   the octagonal "cut corner" look, and scaleX tightens the
+   monospace letter width down to match.
 --------------------------------------------------- */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  overflow: clip;
+.chamfer {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-chamfer);
+  font-weight: 800;
+  transform: scaleX(0.491);
+  transform-origin: left center;
 }
 
+.chamfer__word {
+  display: inline-flex;
+}
+
+.chamfer__word span {
+  display: inline-block;
+  clip-path: polygon(18% 0, 100% 0, 100% 82%, 82% 100%, 0 100%, 0 18%);
+}
+
+.chamfer__space {
+  display: inline-block;
+  width: 0.55em;
+}
+
+.chamfer__dot {
+  display: inline-block;
+  color: var(--color-accent-2);
+  margin-left: 0.18em;
+  clip-path: polygon(18% 0, 100% 0, 100% 82%, 82% 100%, 0 100%, 0 18%);
+}
+
+/* ---------------------------------------------------
+   Header / Nav
+--------------------------------------------------- */
 .site-header {
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
-  padding-top: 5.6vh;
+  background: var(--color-bg-black);
 }
 
 .site-header__inner {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  height: var(--header-height);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  flex-shrink: 0;
+}
+
+.brand-mark .chamfer {
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
 }
 
 .primary-nav__list {
   display: flex;
   align-items: center;
-  width: min(61vw, 1170px);
-  justify-content: space-between;
+  gap: clamp(1.5rem, 3.5vw, 3rem);
 }
 
 .primary-nav__list a {
@@ -172,7 +210,7 @@ button {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: clamp(0.85rem, 1.05vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
   font-weight: 500;
   color: var(--color-text-muted);
   transition: color var(--duration-fast) var(--ease-out);
@@ -206,10 +244,6 @@ button {
 
 .nav-toggle {
   display: none;
-  position: absolute;
-  right: var(--space-6);
-  top: 50%;
-  transform: translateY(-50%);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -217,6 +251,7 @@ button {
   width: 44px;
   height: 44px;
   border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .nav-toggle__bar {
@@ -239,101 +274,48 @@ button {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.hero__vertical-label {
-  position: absolute;
-  left: 13.2vw;
-  top: 50.5vh;
-  transform: translate(-50%, -50%) rotate(180deg);
-  writing-mode: vertical-rl;
-  font-size: clamp(0.7rem, 0.8vw, 0.9rem);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--color-text-faint);
-  margin: 0;
-  white-space: nowrap;
-  z-index: 2;
-}
-
-.hero__visual {
-  position: absolute;
-  z-index: 1;
-  left: 69.7vw;
-  top: 52.4vh;
-  transform: translate(-50%, -50%);
-  width: clamp(280px, 39.4vw, 760px);
-  pointer-events: none;
-}
-
-.ring-art {
+/* ---------------------------------------------------
+   Hero
+--------------------------------------------------- */
+.hero {
   position: relative;
-  width: 100%;
-  height: auto;
+  overflow: clip;
+  background: var(--color-bg-black);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
+  padding-block: var(--space-16);
 }
 
 .hero__content {
-  position: absolute;
+  position: relative;
   z-index: 2;
-  left: 18.6vw;
-  top: 34.3vh;
-  max-width: 46vw;
+  max-width: 620px;
 }
 
 .hero__title {
-  margin: 0;
-  font-family: "Martian Mono", ui-monospace, monospace;
+  margin: 0 0 var(--space-12);
+  font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.4rem, 10.9vw, 13.1rem);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
-}
-
-.hero__title-visual {
-  display: inline-flex;
-  align-items: baseline;
-  transform: scaleX(0.491);
-  transform-origin: left center;
-}
-
-.hero__title-word {
-  display: inline-flex;
-}
-
-.hero__title-word span {
-  display: inline-block;
-  clip-path: polygon(18% 0, 100% 0, 100% 82%, 82% 100%, 0 100%, 0 18%);
-}
-
-.hero__title-dot {
-  display: inline-block;
-  color: var(--color-accent-2);
-  margin-left: 0.18em;
-  clip-path: polygon(18% 0, 100% 0, 100% 82%, 82% 100%, 0 100%, 0 18%);
-}
-
-.hero__subtitle {
-  margin: 0.5vh 0 0;
-  max-width: 34ch;
-  font-size: clamp(1rem, 1.34vw, 1.5rem);
-  font-weight: 500;
-  color: var(--color-text);
+  font-size: clamp(2.25rem, 4.2vw, 3.75rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
 }
 
 .hero__cta {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  margin-top: 10.5vh;
   min-height: 44px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.1rem, 1.62vw, 1.8rem);
   transition: color var(--duration-fast) var(--ease-out);
 }
 
-.hero__cta-icon {
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: transform var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out);
+.hero__cta .chamfer {
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
 }
 
 .hero__cta:hover,
@@ -341,21 +323,82 @@ button {
   color: var(--color-accent-2);
 }
 
-.hero__cta:hover .hero__cta-icon,
-.hero__cta:focus-visible .hero__cta-icon {
-  opacity: 1;
-  transform: translateX(0);
+.hero__visual {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: -6%;
+  transform: translateY(-50%);
+  width: min(58vw, 900px);
+  pointer-events: none;
 }
 
-.hero__stats {
-  position: absolute;
-  right: 3.3vw;
-  bottom: 3.9vh;
+.fabric-art {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------------------------------------------------
+   Services
+--------------------------------------------------- */
+.services__header {
+  background: var(--color-bg-black);
+  padding-block: var(--space-12) var(--space-8);
+  text-align: center;
+}
+
+.services__title {
   margin: 0;
-  font-size: clamp(0.9rem, 1.28vw, 1.5rem);
-  font-weight: 500;
-  color: var(--color-text-muted);
-  z-index: 2;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+}
+
+.services__title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: var(--space-4) auto 0;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+.services__panel {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--space-24);
+  background-image: url("assets/services-gradient.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.services__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  width: 100%;
+  max-width: var(--container-max);
+  padding-inline: var(--space-6);
+}
+
+.services__card {
+  flex: 1 1 180px;
+  max-width: 220px;
+  min-height: 380px;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4) 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  text-align: center;
 }
 
 /* ---------------------------------------------------
@@ -368,73 +411,45 @@ button {
 }
 
 /* ---------------------------------------------------
-   Responsive (below the reference's desktop composition,
-   fall back to a simple stacked flow layout)
+   Responsive
 --------------------------------------------------- */
 @media (max-width: 1023px) {
-  .hero {
+  .hero__grid {
+    grid-template-columns: 1fr;
     min-height: auto;
-    padding-block: 6.5rem 3rem;
+    gap: var(--space-12);
+    padding-block: var(--space-12);
   }
 
-  .site-header {
-    position: relative;
-    padding-top: 0;
-  }
-
-  .site-header__inner {
-    padding-inline: var(--space-6);
-    height: 72px;
-  }
-
-  .hero__vertical-label {
-    display: none;
+  .hero__content {
+    max-width: none;
   }
 
   .hero__visual {
     position: relative;
     inset: auto;
-    left: auto;
     top: auto;
+    right: auto;
     transform: none;
-    width: min(80vw, 420px);
+    width: min(85vw, 560px);
     margin-inline: auto;
+    order: 2;
   }
 
-  .hero__content {
-    position: relative;
-    left: auto;
-    top: auto;
-    max-width: none;
-    padding-inline: clamp(2rem, 8vw, 3.5rem);
-    text-align: left;
-  }
-
-  .hero__title {
-    font-size: clamp(2.75rem, 12vw, 5.5rem);
-  }
-
-  .hero__cta {
-    margin-top: var(--space-8);
-  }
-
-  .hero__stats {
-    position: static;
-    margin-top: var(--space-12);
-    padding-inline: clamp(2rem, 8vw, 3.5rem);
-    text-align: center;
+  .services__card {
+    min-height: 300px;
   }
 }
 
 @media (max-width: 767px) {
-  .site-header__inner {
-    height: 64px;
+  :root {
+    --header-height: 64px;
   }
 
   .primary-nav {
     position: fixed;
     inset: 64px 0 0 0;
-    background: var(--color-bg);
+    background: var(--color-bg-black);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -454,7 +469,6 @@ button {
   }
 
   .primary-nav__list {
-    width: auto;
     flex-direction: column;
     gap: var(--space-6);
   }
@@ -468,6 +482,17 @@ button {
   }
 
   .hero__title {
-    font-size: clamp(2.5rem, 14vw, 4rem);
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .services__list {
+    gap: var(--space-4);
+  }
+
+  .services__card {
+    flex: 1 1 130px;
+    min-height: 220px;
+    border-radius: 32px;
+    padding-top: var(--space-6);
   }
 }
