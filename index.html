@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Benasia — Web development, UX/UI, E-commerce</title>
-  <meta name="description" content="Benasia crafts perfect digital products — web development, UX/UI design and e-commerce experiences." />
+  <title>Benasia — Digital Studio</title>
+  <meta name="description" content="Benasia is a digital studio building websites, UX/UI design, art direction and e-commerce experiences that attract clients." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@800&family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@800&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -18,16 +18,15 @@
   <header class="site-header">
     <div class="wrap site-header__inner">
       <a class="brand-mark" href="#top" aria-label="Benasia home">
-        <span class="chamfer" aria-hidden="true"><span class="chamfer__word"><span>b</span><span>e</span><span>n</span><span>a</span><span>s</span><span>i</span><span>a</span></span><span class="chamfer__dot">.</span></span>
-        <span class="sr-only">benasia.</span>
+        <span class="chamfer" aria-hidden="true"><span class="chamfer__word"><span>b</span><span>e</span><span>n</span><span>a</span><span>s</span><span>i</span><span>a</span></span></span>
+        <span class="sr-only">benasia</span>
       </a>
 
       <nav class="primary-nav" aria-label="Primary">
         <ul id="primary-nav-list" class="primary-nav__list">
-          <li><a href="#top" class="is-active">Home</a></li>
-          <li><a href="#service">Service</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#service" class="is-active">Service</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#projects">Our projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -49,37 +48,167 @@
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="hero__dots hero__dots--top" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </p>
+
       <div class="wrap hero__grid">
         <div class="hero__content">
-          <h1 id="hero-title" class="hero__title">Websites that will make your business stand out.</h1>
+          <h1 id="hero-title" class="hero__title">
+            <span class="hero__title-line hero__title-line--accent">Digital</span>
+            <span class="hero__title-line">Studio</span>
+          </h1>
 
-          <a class="hero__cta" href="#contact">
-            <span class="chamfer" aria-hidden="true"><span class="chamfer__word"><span>S</span><span>T</span><span>A</span><span>R</span><span>T</span><span class="chamfer__space"></span><span>A</span><span class="chamfer__space"></span><span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span></span></span>
-            <span class="sr-only">Start a project</span>
-          </a>
+          <p class="hero__subtitle">What if your website became your best salesperson?</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--gradient" href="#contact">Learn more</a>
+            <a class="btn btn--outline" href="#projects">Our cases</a>
+          </div>
         </div>
 
         <div class="hero__visual" aria-hidden="true">
           <img class="fabric-art" src="assets/fabric.png" alt="" width="1400" height="788" />
+
+          <div class="hero__mockup">
+            <p class="hero__mockup-eyebrow">Join the club</p>
+            <p class="hero__mockup-title">Modern<br />website<br />design</p>
+            <p class="hero__mockup-caption">Examples</p>
+            <p class="hero__mockup-tag">Bold<br />attitude</p>
+          </div>
         </div>
       </div>
+
+      <p class="hero__dots hero__dots--bottom" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </p>
     </section>
 
     <section class="services" id="service" aria-labelledby="services-title">
-      <div class="services__header">
+      <div class="wrap services__header">
+        <p class="services__eyebrow">What we do</p>
         <h2 id="services-title" class="services__title">Services</h2>
       </div>
 
-      <div class="services__panel">
-        <ul class="services__list">
-          <li class="services__card">Website Development</li>
-          <li class="services__card">UX-UI design</li>
-          <li class="services__card">Art Direction</li>
-          <li class="services__card">E-commerce</li>
+      <div class="wrap services__grid">
+        <article class="service-card">
+          <h3 class="service-card__title">Website Development</h3>
+          <p class="service-card__text">Custom websites for your business goals.</p>
+          <a class="btn btn--gradient btn--sm" href="#contact">Learn more</a>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-card__title">UX-UI design</h3>
+          <p class="service-card__text">Make every interaction feel effortless</p>
+          <a class="btn btn--gradient btn--sm" href="#contact">Learn more</a>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-card__title">Art Direction</h3>
+          <p class="service-card__text">Give your brand a visual identity</p>
+          <a class="btn btn--gradient btn--sm" href="#contact">Learn more</a>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-card__title">E-commerse</h3>
+          <p class="service-card__text">Make every visit a step toward purchase.</p>
+          <a class="btn btn--gradient btn--sm" href="#contact">Learn more</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="statement" aria-label="Statement">
+      <span class="statement__line" aria-hidden="true"></span>
+      <p class="statement__text">We built and create what works and attracts clients</p>
+    </section>
+
+    <section class="features" id="features" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title" class="features__title">Features</h2>
+
+        <ol class="features__list">
+          <li class="feature">
+            <span class="feature__number" aria-hidden="true">01</span>
+            <h3 class="feature__title">Flexibility</h3>
+            <p class="feature__text">Whatever your project requires, we adapt to your needs and demands. From specific requirements to unique ideas, we make it work for your project.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__number" aria-hidden="true">02</span>
+            <h3 class="feature__title">Creativity</h3>
+            <p class="feature__text">Our team brings a highly creative approach to every project. We can develop bold, original concepts and suggest ways to make your project even better.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__number" aria-hidden="true">03</span>
+            <h3 class="feature__title">Speed</h3>
+            <p class="feature__text">We respond quickly and execute projects in a short amount of time. We also work efficiently with tight deadlines when needed.</p>
+          </li>
+          <li class="feature">
+            <span class="feature__number" aria-hidden="true">04</span>
+            <h3 class="feature__title">Quality</h3>
+            <p class="feature__text">Every member of our team is a professional in their field, ensuring an extremely high standard of work. We deliver results that are effective and admired.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <h2 id="projects-title" class="projects__title"><span class="projects__title-accent">Our</span> Projects</h2>
+
+        <ul class="projects__list">
+          <li class="projects__item">
+            <img src="assets/fabric.png" alt="Placeholder — replace with a real project image" loading="lazy" />
+          </li>
+          <li class="projects__item">
+            <img src="assets/fabric.png" alt="Placeholder — replace with a real project image" loading="lazy" />
+          </li>
+          <li class="projects__item">
+            <img src="assets/fabric.png" alt="Placeholder — replace with a real project image" loading="lazy" />
+          </li>
         </ul>
       </div>
     </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact__grid">
+        <div class="contact__intro">
+          <h2 class="contact__heading">Let&rsquo;s talk</h2>
+          <p class="contact__text">
+            <strong>Lets start a project.</strong> Have an idea in mind — website, app, or rebrand? Let&rsquo;s make it real.
+          </p>
+        </div>
+
+        <div class="contact__form-wrap">
+          <h3 id="contact-title" class="contact__form-title">Contact</h3>
+
+          <form class="contact__form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="field-email">Email</label>
+              <input type="email" id="field-email" name="email" autocomplete="email" required />
+            </div>
+
+            <div class="field">
+              <label for="field-name">Your name</label>
+              <input type="text" id="field-name" name="name" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="field-project">Describe your project in short</label>
+              <textarea id="field-project" name="project" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--gradient">Send</button>
+            <p class="contact__form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer" aria-label="Footer">
+    <span class="chamfer chamfer--footer" aria-hidden="true"><span class="chamfer__word"><span>b</span><span>e</span><span>n</span><span>a</span><span>s</span><span>i</span><span>a</span></span></span>
+    <span class="sr-only">Benasia</span>
+  </footer>
 
   <script src="script.js" defer></script>
 </body>

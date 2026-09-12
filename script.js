@@ -32,3 +32,19 @@
     if (event.key === "Escape") closeNav();
   });
 })();
+
+(function () {
+  var form = document.getElementById("contactForm");
+  var status = document.getElementById("contactFormStatus");
+  if (!form || !status) return;
+
+  // NOTE: this is a static site with no backend, so there is nowhere for
+  // this data to go yet. This just confirms the form works client-side
+  // (validation, focus) until a real submission endpoint is wired up.
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    status.textContent = "Thanks! (Form isn't wired to send anywhere yet — ask Claude to connect it.)";
+    form.reset();
+  });
+})();
