@@ -15,42 +15,46 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="wrap site-header__inner">
-      <a class="brand-mark" href="#top" aria-label="Benasia home">
-        <span class="chamfer" aria-hidden="true"><span class="chamfer__word"><span>b</span><span>e</span><span>n</span><span>a</span><span>s</span><span>i</span><span>a</span></span></span>
-        <span class="sr-only">benasia</span>
-      </a>
-
-      <nav class="primary-nav" aria-label="Primary">
-        <ul id="primary-nav-list" class="primary-nav__list">
-          <li><a href="#service" class="is-active">Service</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#projects">Our projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <button
-        type="button"
-        class="nav-toggle"
-        id="navToggle"
-        aria-expanded="false"
-        aria-controls="primary-nav-list"
-        aria-label="Toggle navigation menu"
-      >
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-    </div>
-  </header>
-
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__bezel" aria-hidden="true"></div>
+
+      <header class="site-header">
+        <div class="wrap site-header__inner">
+          <a class="brand-mark" href="#top" aria-label="Benasia home">
+            <span class="chamfer" aria-hidden="true"><span class="chamfer__word"><span>b</span><span>e</span><span>n</span><span>a</span><span>s</span><span>i</span><span>a</span></span></span>
+            <span class="sr-only">benasia</span>
+          </a>
+
+          <nav class="primary-nav" aria-label="Primary">
+            <ul id="primary-nav-list" class="primary-nav__list">
+              <li><a href="#service" class="is-active">Service</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#projects">Our projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <button
+            type="button"
+            class="nav-toggle"
+            id="navToggle"
+            aria-expanded="false"
+            aria-controls="primary-nav-list"
+            aria-label="Toggle navigation menu"
+          >
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+        </div>
+      </header>
+
       <p class="hero__dots hero__dots--top" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </p>
+
+      <img class="hero__fabric" src="assets/fabric.png" alt="" aria-hidden="true" width="1400" height="788" />
 
       <div class="wrap hero__grid">
         <div class="hero__content">
@@ -61,21 +65,25 @@
 
           <p class="hero__subtitle">What if your website became your best salesperson?</p>
 
-          <div class="hero__actions">
-            <a class="btn btn--gradient" href="#contact">Learn more</a>
-            <a class="btn btn--outline" href="#projects">Our cases</a>
-          </div>
+          <a class="btn btn--gradient" href="#contact">Learn more</a>
         </div>
 
-        <div class="hero__visual" aria-hidden="true">
-          <img class="fabric-art" src="assets/fabric.png" alt="" width="1400" height="788" />
-
-          <div class="hero__mockup">
+        <div class="hero__mockup-wrap">
+          <div class="hero__mockup" aria-hidden="true">
+            <div class="hero__mockup-chrome">
+              <span></span><span></span><span></span>
+            </div>
             <p class="hero__mockup-eyebrow">Join the club</p>
             <p class="hero__mockup-title">Modern<br />website<br />design</p>
             <p class="hero__mockup-caption">Examples</p>
-            <p class="hero__mockup-tag">Bold<br />attitude</p>
+            <div class="hero__mockup-thumbs">
+              <span class="hero__mockup-thumb hero__mockup-thumb--a"></span>
+              <span class="hero__mockup-thumb hero__mockup-thumb--b"></span>
+            </div>
+            <p class="hero__mockup-tag">Bold<br />atti&#8209;tude</p>
           </div>
+
+          <a class="btn btn--gradient-warm" href="#projects">Our cases</a>
         </div>
       </div>
 
