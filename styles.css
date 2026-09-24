@@ -416,6 +416,79 @@ h3 {
 }
 
 /* ---------------------------------------------------
+   Contact page hero + info strip
+--------------------------------------------------- */
+.contact-hero {
+  position: relative;
+  padding-block: calc(var(--header-height) + clamp(5rem, 14vh, 10rem)) var(--section-pad);
+  background:
+    radial-gradient(900px 520px at 78% 12%, rgba(255, 90, 31, 0.13), transparent 62%),
+    var(--color-bg);
+}
+
+.contact-hero__inner {
+  max-width: 46rem;
+}
+
+.contact-hero__eyebrow {
+  margin: 0 0 var(--space-8);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-faint);
+}
+
+.contact-hero__title {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(2.25rem, 5.4vw, 4rem);
+  line-height: 1.05;
+}
+
+.contact-hero__text {
+  margin: 0;
+  max-width: 52ch;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.contact-info {
+  padding-block: 0 var(--section-pad);
+  background: var(--color-bg);
+}
+
+.contact-info__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--color-line);
+  border-left: 1px solid var(--color-line);
+}
+
+.contact-info__item {
+  padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2rem);
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.contact-info__label {
+  margin: 0 0 var(--space-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-faint);
+}
+
+.contact-info__value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  letter-spacing: -0.01em;
+}
+
+/* ---------------------------------------------------
    Stats band
 --------------------------------------------------- */
 .stats {
@@ -833,6 +906,10 @@ h3 {
 
   .stats__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-info__grid {
+    grid-template-columns: 1fr;
   }
 
   .pitch-row,
